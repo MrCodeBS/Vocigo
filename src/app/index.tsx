@@ -3,8 +3,8 @@ import { StyleSheet, Text, View } from "react-native";
 export default function Index() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Home Screen</Text>
-      <Link href="/about" style={styles.button}>
+      <Text style={styles.title}>VociGo</Text>
+      <Text style={styles.subtitle}>Meine Vokabel-Lern-App</Text>      <Link href="/about" style={styles.button}>
         Go to About Screen
       </Link>
     </View>
