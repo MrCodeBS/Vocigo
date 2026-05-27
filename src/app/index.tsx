@@ -1,8 +1,10 @@
 import { Ionicons } from "@expo/vector-icons";
-import { Link } from "expo-router";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { useRouter } from "expo-router";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import VociItem from "../components/VociItem";
 import Voci from "../models/voci";
+import { SafeAreaView } from "react-native-safe-area-context";
+import SpeedDialButton from "../components/SpeedDialButton"; // 👈 add this line
 
 const vociList: Voci[] = [
   { term: "Dog", translation: "Hund" },
@@ -16,8 +18,9 @@ const vociList: Voci[] = [
 ];
 
 export default function Index() {
+  const router = useRouter();
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>VociGo</Text>
         <Text style={styles.subtitle}>Meine Vokabel-Lern-App</Text>
@@ -38,10 +41,9 @@ export default function Index() {
         }
       />
 
-      <Link href="/about" style={styles.button}>
-        Go to About Screen
-      </Link>
-    </View>
+      <SpeedDialButton />
+
+    </SafeAreaView>
   );
 }
 
@@ -72,18 +74,6 @@ const styles = StyleSheet.create({
   },
   listContent: {
     paddingBottom: 20,
-  },
-  button: {
-    backgroundColor: "#4facfe",
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "center",
-    padding: 16,
-    borderRadius: 12,
-    marginTop: 10,
-    marginBottom: 30,
-    overflow: "hidden", // Important for iOS borders on Link text
   },
   emptyContainer: {
     alignItems: "center",
