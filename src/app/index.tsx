@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Link } from "expo-router";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import VociItem from "../components/VociItem";
 import Voci from "../models/voci";
 
@@ -38,9 +38,12 @@ export default function Index() {
         }
       />
 
-      <Link href="/about" style={styles.button}>
-        Go to About Screen
-      </Link>
+      <Pressable onPress={() => router.push("/learn")} style={({ pressed }) => [
+        styles.fab,
+        { opacity: pressed ? 0.7 : 1, transform: [{ sacale: pressed ? 0.95 : 1 }]},
+      ]}>
+        <Ionicons name="play" size={28} color={"#fff"}/>
+      </Pressable>
     </View>
   );
 }
@@ -84,6 +87,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 30,
     overflow: "hidden", // Important for iOS borders on Link text
+  },
+  buttonText:{
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
   },
   emptyContainer: {
     alignItems: "center",
